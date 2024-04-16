@@ -1,0 +1,41 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+
+
+  {% block body %}
+  
+  
+  <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2>Welcome to<span>SIT_SLOT</span></h2>
+          <p> our College Hall Slot Booking page! This platform offers a quick and easy way to reserve halls for your events. With just a few clicks, you can access available spaces, amenities, and scheduling options. Simplify your event planning process and book with ease!</p>
+          <a href="/event" class="btn-get-started">Upcoming events</a><br> <br>
+          <a href="/login" class="btn-get-started">book</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <main id="main" data-aos="fade" data-aos-delay="1500">
+    <section id="gallery" class="gallery">
+      <div class="container-fluid">
+        <div class="row gy-4 justify-content-center">
+          {% for i in place %}
+          <div class="col-xl-3 col-lg-4 col-md-6">
+            
+            <div class="gallery-item h-100">
+              <img src="{{ i.images.url }}" class="img-fluid" alt="">
+              <div class="gallery-links d-flex align-items-center justify-content-center">
+                <a href="{{ i.images.url }}" title="{{ i.name }}" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                <a href="{% url 'gallery' place_id=i.id %} " class="details-link"><i class="bi bi-link-45deg"></i></a>
+
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </section>
+  </main>
+  {% endblock body %}
+  

@@ -1,0 +1,85 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+{% block style %}
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.table-scroll {
+  border-radius: .5rem;
+}
+
+thead {
+  top: 0;
+  position: sticky;
+}
+{% endblock style %}
+
+
+{% block body %}
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h1>Book your slot  <a href="{% url 'book' myuser_id=request.user.id %}"><span class="badge bg-secondary">Check here</span></a></h1>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Header -->
+
+<section class="bg-black py-3 py-md-5">
+    <div class="container">
+        <div class="row justify-content-lg-center">
+            <div class="col-12 col-lg-9">
+                <div class="text-center"> <!-- Center the content vertically -->
+                    <h3>Update your Slot</h3>
+                </div>
+                    <table class="table table-dark mb-0">
+                      <thead style="background-color: #393939;">
+                        <tr class="text-uppercase text-success">
+                          <th scope="col">Event name</th>
+                          <th scope="col">Place</th>
+                          <th scope="col">Date and Time</th>
+                          <th scope="col">Update</th>
+                          <th scope="col">Delete</th>
+                        </tr>
+                      </thead>
+                      {% for i in events %}
+                      
+                      
+                      <tbody>
+                        <tr>
+                          <td>{{i.event}}</td>
+                          <td>{{i.location}}</td>
+                          <td>{{i.start_time}}</td>
+                          <td><a href='{% url 'do_update' event_id=i.id %}' class="btn btn-success md-sm">Update</a></td>
+                          <td><a href="{% url 'deleteit' event_id=i.id %}" class="btn btn-danger md-sm">Delete</a></td>
+
+
+                         
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                    </table>
+                  </div>
+                </div>
+              </div>
+  </section>
+  <div class="col-12 text-center mt-3"> <!-- Adjust margin-top as needed -->
+    <a href="{% url 'handlelogout' %}" class="btn btn-outline-primary btn-lg">Logout</a>
+</div>
+  
+{% endblock %}

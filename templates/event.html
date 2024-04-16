@@ -1,0 +1,41 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+
+{% block body %}
+
+<div class="page-header d-flex align-items-center">
+  <div class="container position-relative">
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-6 text-center">
+        <h2>Upcoming events</h2>
+        <p>Explore our upcoming events to stay informed and check for available slots to book for your next event.</p>
+      </div>
+    </div>
+  </div>
+</div><!-- End Page Header -->
+
+<!-- ======= Gallery Section ======= -->
+<section id="gallery" class="gallery">
+  <div class="container-fluid">
+    <div class="row gy-4 justify-content-center">
+      {% for event in events %}
+      <div class="col-xl-3 col-lg-4 col-md-6">
+        <div class="gallery-item h-100">
+          {% if event.image %}
+          <img src="{{ event.image.url }}" class="img-fluid" alt="{{ event.name }}">
+          {% endif %}
+          <div class="gallery-links d-flex align-items-center justify-content-center">
+            {% if event.image %}
+            <a href="{{ event.image.url }}" title="{{ event.name }}" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+            {% endif %}
+            <a href="{% url "display" event_id=event.id %}" class="details-link"><i class="bi bi-link-45deg"></i></a>
+           <!-- <h1>{{ event.start_time }}</h1>-->
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section><!-- End Gallery Section -->
+
+{% endblock body %}

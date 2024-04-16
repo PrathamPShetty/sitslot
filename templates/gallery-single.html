@@ -1,0 +1,101 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<!-- ======= End Page Header ======= -->
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2>{{ place.name }}</h2>
+          
+
+          
+
+        </div>
+      </div>
+    </div>
+  </div><!-- End Page Header -->
+
+<section id="gallery-single" class="gallery-single">
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <!-- Gallery Images -->
+        <div class="col-lg-6">
+
+      <div class="position-relative h-100">
+        <div class="slides-1 portfolio-details-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+
+            <div class="swiper-slide">
+              <img src="{{ place.images.url }} " alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{{ place.img1.url }} " alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{{ place.img2.url }} " alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{{ place.img3.url }} " alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{{ place.img4.url }}" alt="">
+            </div>
+            <div class="swiper-slide">
+              <img src="{{ place.img5.url }} " alt="">
+            </div>
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+      </div>
+    </div>
+  </div>
+
+      <div class="row justify-content-between gy-4 mt-4">
+
+        <div class="col-lg-8">
+          <div class="portfolio-description">
+            <h2>For your reference</h2>
+            <p>
+              {{ place.introduction }}
+            </p>
+           
+
+  
+
+            
+
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="portfolio-description">
+            <div class="testimonial-item">
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+              <div>
+                <img src="{% static "assets\img\WhatsApp Image 2024-03-22 at 20.05.46_2c3c9062.jpg "%}" class="testimonial-img" alt="">
+                <h3>Dr. CA A. Raghavendra Rao
+                </h3>
+                <h4>Chairman of Srinivas Group of Institution</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+ 
+  {% endblock body %}

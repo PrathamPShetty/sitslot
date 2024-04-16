@@ -1,0 +1,94 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+    {% block body %}
+    
+   
+    <div class="page-header d-flex align-items-center">
+      <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2>Contact</h2>
+            <p>Feel free to reach out via email or phone for assistance with hall bookings, or use our feedback form for inquiries, and don't forget to check our FAQs for quick answers</p>
+
+          </div>
+        </div>
+      </div>
+    </div><!-- End Page Header -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h4>Location:</h4>
+                <p>Merlapadavu, Arkula, via, Valachil, Mangaluru, Karnataka 574143</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3">
+            <div class="info-item d-flex">
+              <i class="bi bi-phone flex-shrink-0"></i>
+              <div>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+        <section class="bg-black py-3 py-md-5">
+          <div class="container">
+              <div class="row justify-content-lg-center">
+                <div class="col-12 col-lg-9">
+                  <div class="bg-black border rounded shadow-sm overflow-hidden">
+          
+                    <form action="/contact" method='post' enctype="multipart/form-data">{% csrf_token %}
+                      <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                        <div class="col-12">
+                          <label for="fullname" class="form-label">Full Name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" id="fullname" name="name" value="" required>
+                        </div>
+                        <div class="col-12 col-md-6">
+                          <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" value="" required>
+                        </div>
+                    
+                       
+                     
+                        <div class="col-12">
+                          <label for="message" class="form-label">Event Discription <span class="text-danger">*</span></label>
+                          <textarea class="form-control" id="message" name="feedback" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="col-12">
+                          <div class="d-grid">
+                            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+          
+                  </div>
+                </div>
+              </div>
+            </div>
+      </section>
+  </main><!-- End #main -->
+  {% endblock body %}
+ 

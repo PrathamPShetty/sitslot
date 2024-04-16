@@ -1,0 +1,50 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- ======= End Page Header ======= -->
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2>Event Details</h2>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Header -->
+
+<section id="gallery-single" class="gallery-single">
+    <div class="container">
+        <div class="row justify-content-between gy-4 mt-4">
+            <div class="col-lg-6">
+                <div class="gallery-item h-100">
+                    <img src="{{ event.image.url }}" class="img-fluid" alt="{{ event.name }}">
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="portfolio-info">
+                    <h3>{{ event.event }}</h3>
+                    <ul>
+                        <li><strong>On</strong> <span>{{ event.start_time}}</span></li>
+                        <li><strong>At</strong> <span>{{ event.location}}</span></li>
+                        <li><strong>Event Discription</strong> <span>{{event.discription}}</span></li>
+                        {% comment "" %}<li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
+                         <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>{% endcomment %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <a class="cta-btn" href="/event">Upcoming Events</a>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Header -->
+
+{% endblock body %}

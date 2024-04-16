@@ -1,0 +1,59 @@
+{% extends "sample-inner-page.html" %}
+{% load static %}
+
+
+  {% block body %}
+  <div class="page-header d-flex align-items-center">
+    <div class="container position-relative">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+                <h2>signup</h2>
+                <p>"Welcome to our college venue booking page! Easily reserve a venue for your event with just a few clicks. Whether it's a club meeting, seminar, or celebration, we have the perfect space for you. Enjoy a seamless booking experience tailored. Book now and make your event a success!"</p>
+            </div>
+        </div>
+    </div>
+</div><!-- End Page Header -->
+
+
+  <section class="bg-black py-3 py-md-5">
+    <div class="container">
+        <div class="row justify-content-lg-center">
+          <div class="col-12 col-lg-9">
+            <div class="bg-black border rounded shadow-sm overflow-hidden">
+    
+              <form action="{% url 'signup' %}" method='post' enctype="multipart/form-data">{% csrf_token %} 
+                <div class="row gy-4 gy-xl-5 p-4 p-xl-5">
+                    {% for message in messages %}
+                  <div class="col-12">
+                    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                      <strong>{{message}}</strong> 
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="col-12">
+                    <label for="username" class="form-label">email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="fullname" name="username" value="" required>
+                  </div>
+                 
+                    <div class="col-12">
+                      <label for="password" class="form-label"> Password <span class="text-danger">*</span></label>
+                      <input type="password" class="form-control" id="password" name="password" value="" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="password" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                      <input type="password" class="form-control" id="password" name="pass2" value="" required>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="username" class="form-label">Keyword<span class="text-danger">*</span></label>
+                      <input type="textarea" class="form-control" id="fullname" name="otp" value="" required>
+                    </div>
+ 
+                    <div class="col-12">
+                      <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" type="submit">signup</button>
+                      </div>
+                    </div>
+{% endblock body %}
