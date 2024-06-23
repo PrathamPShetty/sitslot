@@ -28,11 +28,11 @@ def signup(request):
         
         if enteropt != opt:
             messages.warning(request, 'keyword is wrong')
-            return redirect('signup')
+            return redirect('signup.html')
         
         if password != pass2:
             messages.warning(request, 'Email already exists.')
-            return redirect('signup')
+            return redirect('signup.html')
             
         try:
             if User.objects.get(username=email):
