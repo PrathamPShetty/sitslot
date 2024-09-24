@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/sitslot
+    ports:
+      - "8000:8000"
+    environment:
+      - EMAIL_HOST_USER=snapship43@gmail.com
+      - EMAIL_HOST_PASSWORD=urifidtwkrgjouej
+      - SECRET_KEY=django-insecure-9vhls!b*0xpy5j2&_@=y#8q-l@k9876klk1uj&b5qwz(rqldp2
+
+  
