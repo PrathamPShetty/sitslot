@@ -2,15 +2,13 @@ version: '3.8'
 
 services:
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    build: .  # Build the image from the current directory
+    command: python manage.py runserver 0.0.0.0:8000  # Command to run the Django server
     volumes:
-      - .:/sitslot
+      - .:/sitslot  # Mount the current directory to /sitslot in the container
     ports:
-      - "8000:8000"
+      - "8000:8000"  # Map port 8000 on the host to port 8000 on the container
     environment:
-      - EMAIL_HOST_USER=snapship43@gmail.com
-      - EMAIL_HOST_PASSWORD=urifidtwkrgjouej
-      - SECRET_KEY=django-insecure-9vhls!b*0xpy5j2&_@=y#8q-l@k9876klk1uj&b5qwz(rqldp2
-
-  
+      - EMAIL_HOST_USER=snapship43@gmail.com  # Email host user
+      - EMAIL_HOST_PASSWORD=urifidtwkrgjouej  # Email host password
+      - SECRET_KEY=django-insecure-9vhls!b*0xpy5j2&_@=y#8q-l@k9876klk1uj&b5qwz(rqldp2  # Django secret key
