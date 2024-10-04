@@ -28,6 +28,4 @@ docker-compose exec web python manage.py migrate
 echo "Restarting services..."
 docker-compose restart
 
-# Optional: Show logs if needed (useful for debugging)
-echo "Showing Docker logs for debugging purposes..."
-docker-compose logs -f
+
