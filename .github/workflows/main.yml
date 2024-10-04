@@ -18,12 +18,15 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Ensure known_hosts is writable
+      run: |
+        touch ~/.ssh/known_hosts
+        chmod 644 ~/.ssh/known_hosts
 
     - name: Add server to known hosts
       run: |
-        ssh-keyscan -H 174.232.122.147 >> ~/.ssh/known_hosts
+        ssh-keyscan -H 174.232.122.147 >> ~/.ssh/known_hosts || echo "ssh-keyscan failed."
 
     - name: Deploy code via SSH
       run: |
