@@ -9,10 +9,9 @@
                 <h2>Login</h2>
                 <p>"Welcome to our college venue booking page! Easily reserve a venue for your event with just a few clicks. Whether it's a club meeting, seminar, or celebration, we have the perfect space for you. Enjoy a seamless booking experience tailored. Book now and make your event a success!"</p>
             </div>
-            
         </div>
     </div>
-</div><!-- End Page Header -->
+</div>
 
 <section class="bg-black py-3 py-md-5">
     <div class="container">
@@ -31,7 +30,7 @@
                             </div>
                             {% endfor %}
                             <div class="col-12">
-                                <label for="username" class="form-label">User Name <span class="text-danger">*</span></label>
+                                <label for="username" class="form-label">Email <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="fullname" name="username" value="" required>
                             </div>
                             <div class="col-12">
@@ -44,9 +43,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 text-center mt-3"> <!-- Adjust margin-top as needed -->
+                       <div class="col-12 text-center mt-3"> 
+
                             <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg">Signup</a>
-                        </div>
+                        </div> 
                         <br>
                     </form>
                 </div>

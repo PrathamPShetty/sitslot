@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Event)
 admin.site.register(places)
+admin.site.register(venue)

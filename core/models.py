@@ -17,6 +17,12 @@ class places(models.Model):
     
     def __str__(self) -> str:
         return self.name
+    
+
+class venue(models.Model):
+    name = models.CharField(max_length=100,default='')  
+    def __str__(self) -> str:
+        return self.name
 
 
 
@@ -27,7 +33,7 @@ class Event(models.Model):
     start_time = models.DateTimeField(default=datetime(1970, 1, 1))
     end_time = models.DateTimeField(default=datetime(1970, 1, 1))
     image = models.ImageField(upload_to='image')
-    place = models.ForeignKey(places, on_delete=models.CASCADE)
+    place = models.ForeignKey(venue, on_delete=models.CASCADE)
     discription = models.CharField(max_length=1000,default='', null=True, blank=True)
     location= models.CharField(max_length=20,default='', null=True, blank=True)
     myuser = models.ForeignKey(User, on_delete=models.CASCADE, default=None)

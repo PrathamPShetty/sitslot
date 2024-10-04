@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.conf import settings
 import re
-from .models import Event, places
+from .models import Event, places, venue
 from datetime import datetime, timedelta
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
@@ -37,14 +37,14 @@ def signup(request):
         try:
             if User.objects.get(username=email):
                 messages.info(request, 'Email already exists.')
-                return redirect('signup.html')  # Corrected redirection
+                return redirect('signup.html') 
         except User.DoesNotExist:
             pass
         
-        myuser = User.objects.create_user(username=email, password=password)  # Corrected method name
+        myuser = User.objects.create_user(username=email, password=password)  
         myuser.save()
         messages.success(request, 'Account created successfully.')
-        return redirect('login')  # Corrected redirection
+        return redirect('login')  
     return render(request, 'signup.html')
 
 @login_required
@@ -110,9 +110,7 @@ def display(request, event_id):
 
 @login_required
 def book(request, myuser_id):
-    if request.method == 'POST':
-        # Your existing code
-        
+    if request.method == 'POST': 
         place_id = request.POST.get('place')
         event = request.POST.get('event')
         from_email = request.POST.get('email')
@@ -133,7 +131,7 @@ def book(request, myuser_id):
         
         if start_datetime <= timezone.now():
             messages.info(request, "Invalid Date and Time")
-            all_places = places.objects.all().order_by('id')
+            all_places = venue.objects.all().order_by('id')
             myuser= User.objects.get(pk=myuser_id)
             return render(request, 'book.html', {'place': all_places,'myuser_id':myuser})
 
@@ -147,7 +145,7 @@ def book(request, myuser_id):
                 cc=[],
             )
             email.send()
-            all_places = places.objects.all().order_by('id')
+            all_places = venue.objects.all().order_by('id')
             
             myuser= User.objects.get(pk=myuser_id)
             messages.info(request, "Slot already booked for this time")
@@ -180,7 +178,7 @@ def book(request, myuser_id):
             all_places = places.objects.all().order_by('id')
             return render(request, 'book.html', {'place': all_places})
     else:
-        all_places = places.objects.all().order_by('id') 
+        all_places = venue.objects.all().order_by('id') 
         myuser= User.objects.get(pk=myuser_id)
         return render(request, 'book.html', {'place': all_places,'myuser_id':myuser})
 
@@ -218,7 +216,7 @@ def do_update(request, event_id):
         update.discription = dis
         if img is not None:
             update.image = img
-        update.save()  # Save the changes
+        update.save() 
         return redirect('update', myuser_id=update.myuser_id)
 
     event = get_object_or_404(Event, pk=event_id)
