@@ -3,7 +3,9 @@ version: '3.8'
 services:
   web:
     build: .  # Build the image from the current directory
-    command: python manage.py runserver 0.0.0.0:8000  # Command to run the Django server
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"  # Collect static and then run the server
     volumes:
       - .:/sitslot  # Mount the current directory to /sitslot in the container
     ports:
