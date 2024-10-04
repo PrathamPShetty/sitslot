@@ -1,31 +1,26 @@
 #!/bin/bash
 
-# Exit immediately if a command exits with a non-zero status
-set -e
+set -e  # Exit on error
 
+cd /var/www/project/sitslot || { echo "Directory not found"; exit 1; }
 
-cd /var/www/project/sitslot
-# Pull the latest code
 echo "Pulling the latest code..."
 git pull origin main
 
-# Take down the existing containers (if running)
 echo "Stopping any running containers..."
-docker-compose down
+docker-compose down || echo "No containers to stop."
 
-# Build and start containers in detached mode
 echo "Building and starting the containers..."
 docker-compose up -d --build
 
-# Wait for services to be up (Optional: Add a health check if necessary)
-sleep 10  # Adjust this wait time if necessary
+echo "Waiting for services to be up..."
+sleep 10  # Adjust as needed
 
-# Run database migrations (if needed)
 echo "Running database migrations..."
 docker-compose exec web python manage.py migrate
 
-# Restart services (if needed)
 echo "Restarting services..."
 docker-compose restart
 
-
+echo "Showing Docker logs for debugging..."
+docker-compose logs -f
