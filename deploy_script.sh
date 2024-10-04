@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+
+cd /var/www/project/sitslot
 # Pull the latest code
 echo "Pulling the latest code..."
 git pull origin main
