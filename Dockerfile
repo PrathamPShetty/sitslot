@@ -11,12 +11,23 @@ COPY . /sitslot
 RUN pip install --no-cache-dir -r requirements.txt
 
 
+RUN python manage.py migrate
+
+# Collect static files (only for production)
 RUN python manage.py collectstatic --noinput
-# Make port 8000 available to the world outside this container
+
+# Expose port 8000 to the world outside this container
 EXPOSE 8000
 
-# Define environment variable (optional, based on your app)
-# ENV ENV_VAR_NAME value
+# Set environment variables (optional)
+# ENV DJANGO_SETTINGS_MODULE sitslot.settings.production
 
-# Run the application (update this to your actual command)
+# Add health check to ensure the service is healthy
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD curl --fail http://localhost:8000 || exit 1
+
+# Copy entrypoint.sh to container and set as entrypoint
+# COPY entrypoint.sh /sitslot/entrypoint.sh
+# ENTRYPOINT ["/sitslot/entrypoint.sh"]
+
+# Run the application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
