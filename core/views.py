@@ -121,7 +121,7 @@ def book(request, myuser_id):
         dis = request.POST.get('message')
         
         myuser = User.objects.get(username=from_email)
-        place = places.objects.get(id=place_id)
+        place = venue.objects.get(id=place_id)
         
         date = datetime.strptime(date_str, '%Y-%m-%d').date()
         time = datetime.strptime(time_str, '%H:%M').time()
@@ -175,7 +175,7 @@ def book(request, myuser_id):
             return redirect('/event')
         else:
             messages.warning(request, "Invalid email address")
-            all_places = places.objects.all().order_by('id')
+            all_places = venue.objects.all().order_by('id')
             return render(request, 'book.html', {'place': all_places})
     else:
         all_places = venue.objects.all().order_by('id') 
