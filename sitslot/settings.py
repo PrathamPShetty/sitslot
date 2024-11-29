@@ -95,12 +95,24 @@ WSGI_APPLICATION = 'sitslot.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'sitslot',
+        'CLIENT': {
+            'host': 'mongodb+srv://emergency:emergency@prathampshetty99sai.j4iophu.mongodb.net/sitslot?retryWrites=true&w=majority',
+        }
     }
 }
+
 
 
 # Password validation
