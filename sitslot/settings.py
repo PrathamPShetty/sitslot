@@ -38,6 +38,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://sitslot.vercel.app',
     'http://localhost',
     'http://127.0.0.1',
+    'https://sitslot-m89z4vul6-pratham-p-shettys-projects.vercel.app'
 ]
 
 
