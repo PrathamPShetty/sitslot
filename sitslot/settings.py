@@ -103,13 +103,27 @@ WSGI_APPLICATION = 'sitslot.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'sitslot',
+#         'CLIENT': {
+#             'host': 'mongodb+srv://emergency:emergency@prathampshetty99sai.j4iophu.mongodb.net/sitslot?retryWrites=true&w=majority',
+#         }
+#     }
+# }
+
+from django.db import connection
+connection.queries
+
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'sitslot',
-        'CLIENT': {
-            'host': 'mongodb+srv://emergency:emergency@prathampshetty99sai.j4iophu.mongodb.net/sitslot?retryWrites=true&w=majority',
-        }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sitslot',  # Replace with your database name
+        'USER': 'pratham',  # Replace with your database username
+        'PASSWORD': '123',  # Replace with your database password
+        'HOST': '172.232.123.61',  # Replace with the IP address or hostname of the remote PostgreSQL server
+        'PORT': '5432',  
     }
 }
 
