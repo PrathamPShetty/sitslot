@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://sitslot.adarshsavalagi.me']
+CSRF_TRUSTED_ORIGINS = ['*']
 
 
 ROOT_URLCONF = 'sitslot.urls'
